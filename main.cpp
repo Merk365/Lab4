@@ -5,34 +5,38 @@
 
 using namespace std;
 
-// Чтение строк из файла в вектор
+// Функция 1: Чтение строк из файла в вектор
 vector<string> readLinesFromFile(const string& filename) {
     vector<string> lines;
     // TODO: Реализовать чтение строк из файла
-    // Временно для отладки можно добавить тестовые данные
-    // lines.push_back("Тестовая строка 1");
-    // lines.push_back("Тестовая строка 2");
+    // Участник №1 работает над этой функцией
     return lines;
 }
 
-// Вывод строк на экран
+// Функция 2: Вывод строк на экран
 void printLinesToConsole(const vector<string>& lines) {
     // TODO: Реализовать вывод строк на экран
-    // for (const auto& line : lines) {
-    //     cout << line << endl;
-    // }
+    cout << "=== Вывод строк на экран ===" << endl;
+    for (size_t i = 0; i < lines.size(); i++) {
+        cout << "Строка " << i + 1 << ": " << lines[i] << endl;
+    }
+    cout << "Всего строк: " << lines.size() << endl;
 }
 
-// Запись строк в файл
+// Функция 3: Запись строк в файл
 void writeLinesToFile(const vector<string>& lines, const string& filename) {
     // TODO: Реализовать запись строк в файл
-    // ofstream outputFile(filename);
-    // if (outputFile.is_open()) {
-    //     for (const auto& line : lines) {
-    //         outputFile << line << endl;
-    //     }
-    //     outputFile.close();
-    // }
+    ofstream outputFile(filename);
+    if (outputFile.is_open()) {
+        cout << "Запись в файл " << filename << "..." << endl;
+        for (const auto& line : lines) {
+            outputFile << line << endl;
+        }
+        outputFile.close();
+        cout << "Запись завершена успешно." << endl;
+    } else {
+        cout << "Ошибка: не удалось открыть файл " << filename << " для записи" << endl;
+    }
 }
 
 int main() {
@@ -43,13 +47,23 @@ int main() {
     // Имя файла для записи
     string outputFilename = "output.txt";
     
-    // Чтение строк из файла
+    // Вместо вызова функции №1 создаем вектор вручную
+    vector<string> lines;
+    
+    // Добавляем тестовые данные вручную
+    lines.push_back("Первая тестовая строка");
+    lines.push_back("Вторая строка для проверки");
+    lines.push_back("Третья строка - вывод на экран");
+    lines.push_back("Четвертая строка - запись в файл");
+    lines.push_back("Пятая, последняя строка");
+    
+    cout << "Используются тестовые данные (вручную созданный вектор)" << endl;
+    cout << "Размер вектора: " << lines.size() << " строк" << endl;
+    
     vector<string> lines = readLinesFromFile(inputFilename);
     
-    // Вывод строк на экран
     printLinesToConsole(lines);
     
-    // Запись строк в файл
     writeLinesToFile(lines, outputFilename);
     
     cout << "Программа завершена." << endl;
