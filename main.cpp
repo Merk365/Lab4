@@ -8,10 +8,34 @@ using namespace std;
 // Чтение строк из файла в вектор
 vector<string> readLinesFromFile(const string& filename) {
     vector<string> lines;
-    // TODO: Реализовать чтение строк из файла
-    // Временно для отладки можно добавить тестовые данные
-    // lines.push_back("Тестовая строка 1");
-    // lines.push_back("Тестовая строка 2");
+    
+    ifstream inputFile(filename);
+    
+    if (!inputFile.is_open()) {
+        // Если файл не открылся, выводим сообщение об ошибке
+        cout << "Ошибка: не удалось открыть файл " << filename << endl;
+        return lines; // Возвращаем пустой вектор
+    }
+    
+    string line;
+    while (getline(inputFile, line)) {
+        lines.push_back(line);
+    }
+    
+    inputFile.close();
+    
+    // Для отладки и проверки работы функции
+    // Выводим содержимое вектора в консоль
+    cout << "Прочитано строк из файла: " << lines.size() << endl;
+    if (!lines.empty()) {
+        cout << "Содержимое файла:" << endl;
+        for (size_t i = 0; i < lines.size(); i++) {
+            cout << "[" << i + 1 << "] " << lines[i] << endl;
+        }
+    } else {
+        cout << "Файл пуст или произошла ошибка чтения." << endl;
+    }
+    
     return lines;
 }
 
