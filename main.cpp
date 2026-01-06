@@ -15,7 +15,6 @@ vector<string> readLinesFromFile(const string& filename) {
 
 // Функция 2: Вывод строк на экран
 void printLinesToConsole(const vector<string>& lines) {
-    // TODO: Реализовать вывод строк на экран
     cout << "=== Вывод строк на экран ===" << endl;
     for (size_t i = 0; i < lines.size(); i++) {
         cout << "Строка " << i + 1 << ": " << lines[i] << endl;
@@ -25,7 +24,6 @@ void printLinesToConsole(const vector<string>& lines) {
 
 // Функция 3: Запись строк в файл
 void writeLinesToFile(const vector<string>& lines, const string& filename) {
-    // TODO: Реализовать запись строк в файл
     ofstream outputFile(filename);
     if (outputFile.is_open()) {
         cout << "Запись в файл " << filename << "..." << endl;
@@ -46,19 +44,6 @@ int main() {
     string inputFilename = "input.txt";
     // Имя файла для записи
     string outputFilename = "output.txt";
-    
-    // Вместо вызова функции №1 создаем вектор вручную
-    vector<string> lines;
-    
-    // Добавляем тестовые данные вручную
-    lines.push_back("Первая тестовая строка");
-    lines.push_back("Вторая строка для проверки");
-    lines.push_back("Третья строка - вывод на экран");
-    lines.push_back("Четвертая строка - запись в файл");
-    lines.push_back("Пятая, последняя строка");
-    
-    cout << "Используются тестовые данные (вручную созданный вектор)" << endl;
-    cout << "Размер вектора: " << lines.size() << " строк" << endl;
     
     vector<string> lines = readLinesFromFile(inputFilename);
     
